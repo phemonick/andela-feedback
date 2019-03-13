@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  background-color: #F6F9FC;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -9,18 +10,53 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* font-size: calc(10px + 2vmin); */
   color: white;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.feedback-table {
+  display: flex;
+  flex-direction: column;
+    margin: auto;
+    width: 80%;
+
+}
+
+.feedback-header {
+  font-size: 1.7rem;
+  line-height: 3rem;
+  margin: 3rem 0 2rem;
+}
+
+.feedback-row {
+  display: flex;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 0.625rem;
+  border-radius: 0.25rem;
+}
+
+.fb-item-row {
+  background-color: #FFF;
+  color: #1d0e0e;
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+.fb-ind-item{
+  flex: 1;
 }
 
 @keyframes App-logo-spin {
