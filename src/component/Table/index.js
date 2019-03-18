@@ -2,7 +2,6 @@ import React from 'react';
 
 
 const Table = ({id, fellow, from, message, skill, type, date}) => {
-    console.log('*********', fellow)
     return (
         <div className="feedback-row fb-item-row">
             <div className="fb-ind-item">{id}</div>

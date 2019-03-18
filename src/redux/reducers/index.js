@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
 import networkRequest from './networkRequest';
-import table from './table';
-import pieChart from './piechart'
+import feedbackDistribution from './feedbackDistribution';
 
 const root = combineReducers({
     networkRequest,
-    table,
-    pieChart
+    feedbackDistribution,
   });
   
   export default root;

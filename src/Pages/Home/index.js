@@ -2,12 +2,14 @@ import React, { Component, Fragment } from 'react';
 import { BarChart } from 'react-d3-components';
 import { connect } from 'react-redux';
 import '../../App.css';
-import Table from '../Table';
-import PieChart from '../PieChart'
+import Table from '../../component/Table'
+import PieChart from '../../component/PieChart';
+import { getFeedbackValue } from '../../redux/actions/feedback';
+import ErrorPage from '../../component/ErrorPage';
 
 
 
-var data = [{
+const data = [{
     label: 'somethingA',
     values: [{x: 'SomethingA', y: 10}, {x: 'SomethingB', y: 4}, {x: 'SomethingC', y: 3}]
 }];
@@ -16,18 +18,20 @@ var data = [{
 class Home extends Component {
 
     componentDidMount() {
-        console.log(this.props.match.params.chart);
+        const { params } = this.props.match;
+        console.log(this.props.match.params.type);
+        this.props.getFeedbackValue(params.type, params.token);
     }
 
     allFeedback = () => 
-        this.props.barChart.map((feedbackItem, index) => (
+        this.props.userTable.map((feedbackItem, index) => (
             <Table
                 key={feedbackItem.id}
                 id= {index}
-                fellow= {feedbackItem.recipientName}
+                fellow= {feedbackItem.recipientName !== null ? feedbackItem.recipientName : undefined}
                 from={feedbackItem.senderName}
                 message={feedbackItem.message}
-                skill = {feedbackItem.skill.name}
+                skill = {feedbackItem.skill !== null ? feedbackItem.skill.name : 'kay'}
                 type = {feedbackItem.type}
                 date = {feedbackItem.createdAt}
              />
@@ -58,7 +62,7 @@ class Home extends Component {
 
     renderPieChart = () => (
         <div className="App">
-            <div className="feedback-table">
+            <div className="feedback-table align-to-center">
                 <div className="feedback-header"> Pie chart </div>
                 <PieChart
                     chartValue = {this.props.pieChart}
@@ -81,29 +85,27 @@ class Home extends Component {
         this.props.barChart.map((bar) => {
             return {
                 x: bar.name,
-
-                
-
             }
         })
     }
 
     render() {
-        switch(this.props.match.params.chart) {
+        switch(this.props.type) {
             case 'table':
                 return this.renderTable();
-            case 'piechart':
+            case 'pieChart':
                 return this.renderPieChart();
             default:
-                return null;
+                return <ErrorPage />;
         }
 
     }
   }
 
-  export const mapStateToProps = ({ table, pieChart }) => ({
-      barChart: table.rows,
-      pieChart: pieChart.records
+  export const mapStateToProps = ({ feedbackDistribution }) => ({
+      userTable: feedbackDistribution.table,
+      pieChart: feedbackDistribution.pieChart,
+      type: feedbackDistribution.type
   })
   
-  export default connect(mapStateToProps, null)(Home)
+  export default connect(mapStateToProps, {getFeedbackValue})(Home);
