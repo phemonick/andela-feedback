@@ -6,7 +6,7 @@ const PieChart = ({ chartValue }) => {
 
    let value = chartValue.map((value) => (
         {
-            x: value.attribute,
+            x: value.attribute + `(${Math.round(value.percent)} %)`,
             y: value.count
         }
     ))
@@ -19,7 +19,7 @@ const PieChart = ({ chartValue }) => {
     return (
         <Chart
                 data={pieValues}
-                width={600}
+                width={1000}
                 height={400}
                 margin={{top: 10, bottom: 10, left: 100, right: 100}}
                 sort={null}
