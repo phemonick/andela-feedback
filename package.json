@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "d3": "^5.9.1",
+    "dom-to-image": "^2.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-react": "^7.12.4",
     "prop-types": "^15.7.2",

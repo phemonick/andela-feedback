@@ -77,7 +77,7 @@ class Home extends Component {
     renderPieChart = () => (
         <div className="App">
             <div className="feedback-table align-to-center">
-                <div className="feedback-header"> Skills </div>
+                <div className="feedback-header"> {this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1)} </div>
                 <PieChart
                     chartValue = {this.props.pieChart}
                 />
@@ -107,7 +107,9 @@ class Home extends Component {
         switch(this.props.type) {
             case 'table':
                 return this.renderTable();
-            case 'pieChart':
+            case 'skill':
+                return this.renderPieChart();
+            case 'attributes':
                 return this.renderPieChart();
             default:
                 return <ErrorPage />;

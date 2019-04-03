@@ -1,4 +1,4 @@
-import { GET_TABLE, GET_ATTRIBUTE, GET_PIE_CHART, GET_DISTRIBUTION } from '../actions/types';
+import { GET_TABLE, GET_ATTRIBUTE, GET_SKILL, GET_DISTRIBUTION } from '../actions/types';
 
 const initialState = {
     table: [],
@@ -22,14 +22,14 @@ const feedbackDistribution = (state = initialState, action) => {
         case GET_ATTRIBUTE:
             return {
                 ...state, 
-                attribute: action.payload,
-                type: 'attribute'
+                pieChart: action.payload,
+                type: 'attributes'
             }
-        case GET_PIE_CHART:
+        case GET_SKILL:
             return {
                 ...state,
                 pieChart: action.payload,
-                type: 'pieChart'
+                type: 'skill'
             }
         case GET_DISTRIBUTION:
             return {
