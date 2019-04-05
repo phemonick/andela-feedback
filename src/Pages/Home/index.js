@@ -80,6 +80,7 @@ class Home extends Component {
                 <div className="feedback-header"> {this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1)} </div>
                 <PieChart
                     chartValue = {this.props.pieChart}
+                    type = {this.props.type}
                 />
 
             </div>
@@ -107,7 +108,7 @@ class Home extends Component {
         switch(this.props.type) {
             case 'table':
                 return this.renderTable();
-            case 'skill':
+            case 'skills':
                 return this.renderPieChart();
             case 'attributes':
                 return this.renderPieChart();

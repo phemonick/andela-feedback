@@ -29,7 +29,7 @@ const feedbackDistribution = (state = initialState, action) => {
             return {
                 ...state,
                 pieChart: action.payload,
-                type: 'skill'
+                type: 'skills'
             }
         case GET_DISTRIBUTION:
             return {

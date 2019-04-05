@@ -2,14 +2,25 @@ import React from 'react';
 
 import { PieChart as Chart } from 'react-d3-components';
 
-const PieChart = ({ chartValue }) => {
+const PieChart = ({ chartValue, type }) => {
 
-   let value = chartValue.map((value) => (
-        {
-            x: value.attribute + `(${Math.round(value.percent)} %)`,
-            y: value.count
-        }
-    ))
+    let value;
+    
+    if(type === 'attributes') {
+     value = chartValue.map((value) => (
+            {
+                x: value.attribute + `(${Math.round(value.percent)} %)`,
+                y: value.count
+            }
+        ))
+    } else {
+        value = chartValue.map((value) => (
+            {
+                x: value.skill + `(${Math.round(value.percent)} %)`,
+                y: value.count
+            }
+        ))
+    }
 
    let pieValues = {
        label: 'pie chart',
