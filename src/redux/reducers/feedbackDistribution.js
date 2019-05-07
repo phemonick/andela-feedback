@@ -1,9 +1,10 @@
-import { GET_TABLE, GET_ATTRIBUTE, GET_SKILL, GET_DISTRIBUTION } from '../actions/types';
+import { GET_TABLE, GET_ATTRIBUTE, GET_SKILL, GET_DISTRIBUTION, GET_LINE_GRAPH } from '../actions/types';
 
 const initialState = {
     table: [],
     attribute: [],
-    pieChart: []
+    pieChart: [],
+    lineGraph: []
 }
 
 /**
@@ -36,6 +37,12 @@ const feedbackDistribution = (state = initialState, action) => {
                 ...state,
                 distribution: action.payload,
                 type: 'distribution'
+            }
+        case GET_LINE_GRAPH:
+            return {
+                ...state,
+                lineGraph: action.payload,
+                type: 'line'
             }
         default: 
             return state;

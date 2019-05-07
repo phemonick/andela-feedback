@@ -1,5 +1,5 @@
 import { isLoading } from './index';
-import { GET_TABLE, GET_SKILL, GET_ATTRIBUTE, GET_DISTRIBUTION } from './types';
+import { GET_TABLE, GET_SKILL, GET_ATTRIBUTE, GET_DISTRIBUTION, GET_LINE_GRAPH } from './types';
 import instance from '../../http/instance';
 
 const feedbackValue = (type, payload) => ({
@@ -28,6 +28,8 @@ export const getFeedbackValue = (type, token) => async (dispatch) => {
                 return dispatch(feedbackValue(GET_SKILL, data.records));
             case 'attributes':
                 return dispatch(feedbackValue(GET_ATTRIBUTE, data.records));
+            case 'line':
+            return dispatch(feedbackValue(GET_LINE_GRAPH, data.records));
             default:
                 return null;      
         }

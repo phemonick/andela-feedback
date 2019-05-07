@@ -7,6 +7,7 @@ import Table from '../../component/Table'
 import PieChart from '../../component/PieChart';
 import { getFeedbackValue } from '../../redux/actions/feedback';
 import ErrorPage from '../../component/ErrorPage';
+import LineGraph from '../../component/LineChart';
 
 
 
@@ -87,6 +88,15 @@ class Home extends Component {
         </div>
     )
 
+    renderLineChart = () => (
+        <div className="App">
+            <div className="feedback-table align-to-center">
+                <div className="feedback-header"> {this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1) + " Chart"} </div>
+                <LineGraph graph={this.props.lineGraph} />
+            </div>
+        </div>
+    )
+
     rendarBarchart = () => (
         <BarChart
             data={data}
@@ -112,6 +122,8 @@ class Home extends Component {
                 return this.renderPieChart();
             case 'attributes':
                 return this.renderPieChart();
+            case 'line':
+                return this.renderLineChart();
             default:
                 return <ErrorPage />;
         }
@@ -126,7 +138,8 @@ class Home extends Component {
       userTable: feedbackDistribution.table,
       pieChart: feedbackDistribution.pieChart,
       type: feedbackDistribution.type,
-      isloading: networkRequest.isLoading
+      isloading: networkRequest.isLoading,
+      lineGraph: feedbackDistribution.lineGraph
   })
   
   export default connect(mapStateToProps, {getFeedbackValue})(Home);
