@@ -36,13 +36,13 @@ const feedbackDistribution = (state = initialState, action) => {
             return {
                 ...state,
                 distribution: action.payload,
-                type: 'distribution'
+                type: 'distributions'
             }
         case GET_LINE_GRAPH:
             return {
                 ...state,
                 lineGraph: action.payload,
-                type: 'line'
+                type: 'distribution'
             }
         default: 
             return state;

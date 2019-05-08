@@ -24,8 +24,8 @@ class LineGraph extends Component {
                         height={400}
                         isDate={true}
                         data={[this.convert()]}
-                        xLabel="Points"
-                        yLabel="Line-chart"
+                        xLabel="Dates"
+                        yLabel="Number of feedback instances"
                     />
                 </div>
             )

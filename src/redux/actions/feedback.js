@@ -17,18 +17,17 @@ export const getFeedbackValue = (type, token) => async (dispatch) => {
     try{
         const response = await instance.get(`${token}`);
         const { data } = response;
-        console.log(response, 'response **********')
         dispatch(isLoading(false));
         switch(type) {
             case 'table':
                 return dispatch(feedbackValue(GET_TABLE, data.records));
-            case 'distribution':
+            case 'distributions':
                 return dispatch(feedbackValue(GET_DISTRIBUTION, data.records))
             case 'skills':
                 return dispatch(feedbackValue(GET_SKILL, data.records));
             case 'attributes':
                 return dispatch(feedbackValue(GET_ATTRIBUTE, data.records));
-            case 'line':
+            case 'distribution':
             return dispatch(feedbackValue(GET_LINE_GRAPH, data.records));
             default:
                 return null;      

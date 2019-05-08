@@ -91,7 +91,7 @@ class Home extends Component {
     renderLineChart = () => (
         <div className="App">
             <div className="feedback-table align-to-center">
-                <div className="feedback-header"> {this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1) + " Chart"} </div>
+                <div className="feedback-header"> Feedback Distribution Over Time </div>
                 <LineGraph graph={this.props.lineGraph} />
             </div>
         </div>
@@ -122,7 +122,7 @@ class Home extends Component {
                 return this.renderPieChart();
             case 'attributes':
                 return this.renderPieChart();
-            case 'line':
+            case 'distribution':
                 return this.renderLineChart();
             default:
                 return <ErrorPage />;
